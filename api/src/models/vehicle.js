@@ -3,9 +3,8 @@ const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Vehicle extends Model {
-    static associate({Employee,Visitor}) {
-        this.belongsTo(Employee)
-        this.belongsTo(Visitor) 
+    static associate({ParkingUser}) {
+        this.belongsTo(ParkingUser)
       }
 
    }

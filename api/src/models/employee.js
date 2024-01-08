@@ -3,21 +3,12 @@ const {Model} = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
   class Employee extends Model { 
-    static associate({Vehicle}) {
-        this.hasMany(Vehicle)
+    static associate({ParkingUser}) {
+        this.belongsTo(ParkingUser,{foreignKey:{unique: true}})
       }
   }
   Employee.init({
-    id:{
-      type: DataTypes.INTEGER,
-      autoIncrement: true,
-      primaryKey: true,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull:false,
-    },
-    mail: {
+    secretCode: {
       type: DataTypes.STRING,
       allowNull:false,
       unique: true
@@ -29,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     facepicture: {
         type: DataTypes.BLOB,
+        allowNull:false,
         unique: true
     },
 
