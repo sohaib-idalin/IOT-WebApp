@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
         this.hasMany(Vehicle)
         this.hasOne(Employee)
         this.hasOne(Visitor)
-        this.belongsToMany(Permission)
+        this.belongsToMany(Permission,{through:"ParkingUser_Permission"})
         
       }
   }
