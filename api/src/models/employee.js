@@ -8,12 +8,7 @@ module.exports = (sequelize, DataTypes) => {
       }
   }
   Employee.init({
-    secretCode: {
-      type: DataTypes.STRING,
-      allowNull:false,
-      unique: true
-    },
-    badgeCode: {
+    rfidCode: {
       type: DataTypes.STRING,
       allowNull:false,
       unique: true
