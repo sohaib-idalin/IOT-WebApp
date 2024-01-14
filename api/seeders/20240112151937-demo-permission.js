@@ -6,19 +6,19 @@ module.exports = {
     
     await queryInterface.bulkInsert('Permissions', [
       {
-        AccessPeriods: '[["1","1","1","1","1","1","0"]]',
+        AccessPeriods: '["1","1","1","1","1","1","0"]',
       },
       {
-        AccessPeriods: '[["2","2","2","2","2","2","0"]]',
+        AccessPeriods: '["2","2","2","2","2","2","0"]',
       },
       {
-        AccessPeriods: '[["0","5","5","0","0","0","0"]]',
+        AccessPeriods: '["0","5","5","0","0","0","0"]',
       },
       {
-        AccessPeriods: '[["1","1","1","1","1","1","0"]]',
+        AccessPeriods: '["1","1","1","1","1","1","0"]',
       },
       {
-        AccessPeriods: '[["2","2","2","2","2","2","0"]]',
+        AccessPeriods: '["2","2","2","2","2","2","0"]',
       },
     ], {});
 

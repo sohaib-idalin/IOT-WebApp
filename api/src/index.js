@@ -5,15 +5,15 @@ const app = express();
 const cors = require('cors');
 
 //Create tables
-const dbSync= async()=> {
-    try {
-    await sequelize.sync({ force: true });
-    console.log("All models were synchronized successfully.");
-    } catch (error) {
-        console.log('fail to synchronize models');
-    }
-}
-dbSync();
+// const dbSync= async()=> {
+//     try {
+//     await sequelize.sync({ force: true });
+//     console.log("All models were synchronized successfully.");
+//     } catch (error) {
+//         console.log('fail to synchronize models');
+//     }
+// }
+// dbSync();
 
 
 app.use(cors());
