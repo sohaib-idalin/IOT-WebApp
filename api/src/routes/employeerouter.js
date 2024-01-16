@@ -7,10 +7,11 @@ const Auth = require('../middlewares/auth');
 const authMiddleware=new Auth();
 const employeeController=new EmployeeController()
 
-router.use(authMiddleware.authentificate)
-router.use(authMiddleware.checkAdmin)
+// router.use(authMiddleware.authentificate)
+// router.use(authMiddleware.checkAdmin)
 
 router.get('/',employeeController.getAll)
+router.get('/By',employeeController.getBy)
 router.get('/:id',employeeController.getById)
 router.post('/',employeeController.create)
 router.put('/:id',employeeController.update)

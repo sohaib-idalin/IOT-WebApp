@@ -7,10 +7,11 @@ const Auth = require('../middlewares/auth');
 const authMiddleware=new Auth();
 const parkingUserController=new ParkingUserController()
 
-router.use(authMiddleware.authentificate)
-router.use(authMiddleware.checkAdmin)
+// router.use(authMiddleware.authentificate)
+// router.use(authMiddleware.checkAdmin)
 
 router.get('/',parkingUserController.getAll)
+router.get('/By',parkingUserController.getBy)
 router.get('/:id',parkingUserController.getById)
 router.post('/',parkingUserController.create)
 router.put('/:id',parkingUserController.update)

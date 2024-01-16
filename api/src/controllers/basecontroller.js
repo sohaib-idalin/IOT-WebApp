@@ -1,3 +1,4 @@
+const BaseServices = require("../services/baseservices");
 
 class BaseController {
     
@@ -6,30 +7,8 @@ class BaseController {
     }
   
     getAll=async (req, res) => {
-      const { page,limit,filters,order,include} = req.query;
-      let options={}
       try {
-        if(page && limit){
-          options={...options,offset: parseInt(page)*parseInt(limit),limit: parseInt(limit)}
-        }
-        if(filters){
-          const filtersArray=JSON.parse(filters)
-          if(filtersArray.length>0){
-            const whereObj=fromFiltersToWhereObj(filtersArray)
-            console.log(filtersArray);
-            console.log(whereObj);
-            options={...options,where : whereObj}
-          }
-          
-        }
-        if(order){
-          const {fieldName,direction}=JSON.parse(order)
-          options.order=[[fieldName,direction]]
-        }
-        if(include){
-          options.include=JSON.parse(include)
-        }
-        const items = await this.model.findAndCountAll(options);
+        const items = await BaseServices.findAndCountAll({model:this.model,query:req.query})
         return res.json(items);
       } catch (error) {
         console.log(error);
@@ -42,13 +21,25 @@ class BaseController {
     getById=async (req, res) => {
       const { id } = req.params;
       const {include} = req.query;
-      let options={}
-      if(include){
-        options.include=JSON.parse(include)
-      }
-      console.log(options);
+      
       try {
-        const item = await this.model.findByPk(id,options);
+        const item = await BaseServices.findById({model:this.model,id:id,include:include})
+        
+        if (!item) {
+          return res.status(404).json({message:'item not found'});
+        }
+        return res.json(item);
+      } catch (error) {
+        return res.status(500).json({error});
+      }
+    }
+
+    getBy=async (req, res) => {
+      const {fieldName,value} = req.query;
+      console.log(req.query);
+      
+      try {
+        const item = await BaseServices.findBy({model:this.model,fieldName:fieldName,value:value})
         
         if (!item) {
           return res.status(404).json({message:'item not found'});
@@ -62,7 +53,7 @@ class BaseController {
     create=async (req, res) => {
       const data = req.body
       try {
-        const newItem = await this.model.create(data);
+        const newItem = await BaseServices.create({model:this.model,data:data})
         return res.status(201).json(newItem);
       } catch (error) {
         return res.status(500).json({error});
@@ -73,13 +64,10 @@ class BaseController {
       const { id } = req.params;
       const data = req.body;
       try {
-        const item = await this.model.findByPk(id);
+        const item = await BaseServices.update({model:this.model, id:id, data:data})
         if (!item) {
           return res.status(404).json({message:'item not found'});
         }
-        
-        item.set(data)
-        await item.save()
         return res.json(item);
       } catch (error) {
         return res.status(500).json({error});
@@ -89,11 +77,10 @@ class BaseController {
     delete=async (req, res) => {
       const { id } = req.params;
       try {
-        const item = await this.model.findByPk(id);
-        if (!item) {
+        const result = await BaseServices.delete({model:this.model, id:id})
+        if (!result) {
           return res.status(404).json({message:'item not found'});
         }
-        await item.destroy();
         return res.sendStatus(204);
 
       } catch (error) {
@@ -102,8 +89,10 @@ class BaseController {
       }
     }
 
+
     
-  }
+    
+}
   
   
   module.exports = BaseController;
