@@ -12,6 +12,7 @@ const parkingUserController=new ParkingUserController()
 
 router.get('/',parkingUserController.getAll)
 router.get('/By',parkingUserController.getBy)
+router.get('/fetchUserData',parkingUserController.getUserData)
 router.get('/:id',parkingUserController.getById)
 router.post('/',parkingUserController.create)
 router.put('/:id',parkingUserController.update)

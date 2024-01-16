@@ -1,10 +1,44 @@
-const {ParkingUser} = require('../models');
+const {ParkingUser,Visitor,Employee,Vehicle} = require('../models');
+const BaseServices = require('../services/baseservices');
 const BaseController = require('./basecontroller');
 
 
 class ParkingUserController extends BaseController {
     constructor() {
         super(ParkingUser)
+    }
+
+    getUserData=async (req,res)=>{
+        console.log("fetch");
+        const {licensePlateNumber,rfidCode,QrCode} = req.query;
+        try {
+            let item={}
+            if(QrCode){
+                item = await BaseServices.findBy({model:Visitor,fieldName:"QrCode",value:QrCode})
+                if(item){
+                    item = await BaseServices.findById({model:ParkingUser,id:item.ParkingUserId,include:'{ "all": true, "nested": true }'})
+                }
+            }else if(rfidCode){
+                item = await BaseServices.findBy({model:Employee,fieldName:"rfidCode",value:rfidCode})
+                if(item){
+                    item = await BaseServices.findById({model:ParkingUser,id:item.ParkingUserId,include:'{ "all": true, "nested": true }'})
+                }
+            }else if(licensePlateNumber){
+                item = await BaseServices.findBy({model:Vehicle,fieldName:"licensePlateNumber",value:licensePlateNumber})
+                if(item){
+                    item = await BaseServices.findById({model:ParkingUser,id:item.ParkingUserId,include:'{ "all": true, "nested": true }'})
+                }
+            }
+            if(item){
+                return res.json(item);
+            }else{
+                return res.json({});
+            }
+            
+        } catch (error) {
+            console.log(error);
+            return res.status(500).json(error);
+        }
     }
 
     getPermissions=async (req,res)=>{
