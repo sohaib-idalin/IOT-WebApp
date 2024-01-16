@@ -10,7 +10,8 @@ class UserController extends BaseController {
     }
 
     login = async (req, res) => {
-        try {
+      console.log("log");  
+      try {
           const { username, password } = req.body;
       
           const user = await UserServices.findByUserName(username)

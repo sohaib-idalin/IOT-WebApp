@@ -8,6 +8,7 @@ const authMiddleware=new Auth();
 const visitorController=new VisitorController()
 
 router.use(authMiddleware.authentificate)
+router.use(authMiddleware.checkAdmin)
 
 router.get('/',visitorController.getAll)
 router.get('/:id',visitorController.getById)
