@@ -1,7 +1,7 @@
 const {ParkingUser,Visitor,Employee,Vehicle} = require('../models');
 const BaseServices = require('../services/baseservices');
 const BaseController = require('./basecontroller');
-
+const crypto = require('crypto');
 
 class ParkingUserController extends BaseController {
     constructor() {
@@ -30,6 +30,8 @@ class ParkingUserController extends BaseController {
                 }
             }
             if(item){
+                // const jsonString = JSON.stringify(item);
+                // const hash = crypto.createHash('sha256').update(jsonString).digest('hex');
                 return res.json(item);
             }else{
                 return res.json({});
@@ -66,7 +68,7 @@ class ParkingUserController extends BaseController {
             if (!parkingUser) {
                 return res.status(404).json({message:'item not found'});
             }
-            if(await parkingUser.hasPermission(permissionId)) return res.status(500).json({error:'already existe'})
+            if(await parkingUser.hasPermission(permissionId)) return res.status(500).json({error:'already exists'})
 
             await parkingUser.addPermission(permissionId)
             await parkingUser.reload()
