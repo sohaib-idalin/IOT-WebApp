@@ -8,50 +8,49 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import { accessTokenCookieName } from "../constants/CookiesNames";
 import { BiSolidBookBookmark } from "react-icons/Bi";
-import { FaUsers, FaUniversity, FaUserAlt} from "react-icons/Fa";
+import { FiAlignJustify } from "react-icons/fi";
 import { MdGroup, MdGroupAdd, MdGroups2 } from "react-icons/Md";
 import { PiStudentBold } from "react-icons/Pi";
 
 
 const navBarItems = [
+    // {
+    //     id: 1,
+    //     link: '/Monitoring',
+    //     title: 'Monitoring',
+    //     icone: FiAlignJustify,
+    // },
     {
-        id: 1,
-        link: '/utilisateurs',
-        title: 'Utilisateurs',
-        icone: FaUserAlt,
+        id: 3,
+        link: '/AppUsers',
+        title: 'App Users',
+        icone: FiAlignJustify,
     },
     {
         id: 2,
-        link: '/groupe',
-        title: 'Groupes',
-        icone: MdGroup,
-    },
-    {
-        id: 3,
-        link: '/beneficiare',
-        title: 'Bénéficiaires',
-        icone: PiStudentBold,
+        link: '/ParkingUsers',
+        title: 'Parging Users',
+        icone: FiAlignJustify,
     },
     {
         id: 4,
-        link: '/cours',
-        title: 'Cours',
-        icone: FaUniversity,
+        link: '/sites',
+        title: 'Sites',
+        icone: FiAlignJustify,
     },
  
     {
         id: 5,
-        link: '/chapitres',
-        title: 'Chapitres',
-        icone: BiSolidBookBookmark,
+        link: '/vehicles',
+        title: 'Vehicles',
+        icone: FiAlignJustify,
     },
-    // {
-    //     id: 7,
-    //     link: '/editeurpr',
-    //     title: 'EditeurPr',
-    //     icone: BiSolidBookBookmark,
-    // },
-    
+    {
+        id: 6,
+        link: '/permissions',
+        title: 'Permissions',
+        icone: FiAlignJustify,
+    },
     
 ]
 

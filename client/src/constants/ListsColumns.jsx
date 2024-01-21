@@ -16,9 +16,51 @@ export const userColumns = [
         data: {}
     },
     {
-        id: 2,
+        id: 3,
         title: 'UserName',
         fieldName: 'username',
+        type: 'text',
+        filterType: 'like',
+        data: {}
+    },
+    {
+        id: 4,
+        title: 'Mail',
+        fieldName: 'mail',
+        type: 'text',
+        filterType: 'like',
+        data: {}
+    },
+    {
+        id: 5,
+        title: 'Role',
+        fieldName: 'role',
+        type: 'select',
+        filterType: 'eq',
+        data: {
+            items: [
+                { title: 'Management', value: 'management' },
+                { title: 'Security', value: 'security' },
+            ]
+        }
+    },
+    
+]
+
+
+export const parkingUserColumns = [
+    {
+        id: 1,
+        title: 'Id',
+        fieldName: 'id',
+        type: 'number',
+        filterType: 'eq',
+        data: {}
+    },
+    {
+        id: 2,
+        title: 'Name',
+        fieldName: 'name',
         type: 'text',
         filterType: 'like',
         data: {}
@@ -32,14 +74,18 @@ export const userColumns = [
         data: {}
     },
     {
-        id: 3,
-        title: 'Role',
-        fieldName: 'role',
-        type: 'text',
+        id: 4,
+        title: 'User Type',
+        fieldName: 'type',
+        type: 'select',
         filterType: 'eq',
-        data: {}
+        data: {
+            items: [
+                { title: 'Employee', value: 'Employee' },
+                { title: 'Visitor', value: 'Visitor' },
+            ]
+        }
     },
-    
 ]
 
 export const employeeColumns = [
@@ -203,12 +249,6 @@ export const permissionColumns =[
         type: 'text',
         filterType: 'like',
         data: {}
-    },
-    {
-        id: 3,
-        title: "Sites",
-        fieldName: "sites",
-        type: 'text',
     },
     
 

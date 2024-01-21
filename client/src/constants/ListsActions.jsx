@@ -122,6 +122,37 @@ export const userActions = [
 
 ]
 
+export const parkingUserActions = [
+    {
+        id: 1,
+        title: 'Consulter',
+        icone: AiFillEye,
+        submit: ConsulterChapitre,
+        showModal: false,
+    },
+
+    {
+        id: 2,
+        title: 'Modifier',
+        icone: BiSolidEditAlt,
+        submit: ModifierChapitre,
+        showModal: false,
+    },
+    {
+        id: 3,
+        title: 'Supprimer',
+        icone: AiFillDelete,
+        submit: SupprimerChapitre,
+        showModal: true,
+        modal: {
+            type: 'confirmation',
+            title: 'Confirmation de suppression',
+            body: 'Vous voulez vraiment supprimmer ce chapitre ?',
+        }
+    },
+
+]
+
 export const employeeActions = [
     {
         id: 1,

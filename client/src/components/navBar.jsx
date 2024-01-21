@@ -11,7 +11,7 @@ export default function NavBar({ items }) {
             <div className=" flex flex-col bg-[#4f5d73] h-full min-h-screen">
 
                 <div>
-                    <h1 className="text-white text-center p-6 font-extrabold text-3xl font-serif">LMSLink</h1>
+                    <h1 className="text-white text-center p-6 font-extrabold text-3xl font-serif">IOT</h1>
                 </div>
                 <div >
                     <nav>

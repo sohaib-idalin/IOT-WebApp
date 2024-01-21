@@ -10,21 +10,21 @@ module.exports = {
         username: "IS",
         mail: "IS@gmail.com",
         password: "ISpass",
-        role: "1"
+        role: "Security"
       },
       {
         name: "yassir",
         username: "AY",
         mail: "AY@gmail.com",
         password: "AYpass",
-        role: "0"
+        role: "Management"
       },
       {
         name: "saadeddine",
         username: "TS",
         mail: "TS@gmail.com",
         password: "TSpass",
-        role: "1"
+        role: "Security"
       }
     ], {});
   
