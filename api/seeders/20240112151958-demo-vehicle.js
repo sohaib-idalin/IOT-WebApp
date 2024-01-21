@@ -7,17 +7,17 @@ module.exports = {
     await queryInterface.bulkInsert('Vehicles', [
       {
         brand: "Range Rover",
-        licensePlateNumber: "77143 d 6",
+        licensePlateNumber: "112259h",
         ParkingUserId:1,
       },
       {
         brand: "Renault",
-        licensePlateNumber: "97695 d 6",
+        licensePlateNumber: "1234579a",
         ParkingUserId:2,
       },
       {
-        brand: "Dacia",
-        licensePlateNumber: "57631 b 8",
+        brand: "Mercedes",
+        licensePlateNumber: "0012246a",
         ParkingUserId:3,
       },
     ], {});
